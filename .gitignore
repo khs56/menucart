@@ -53,3 +53,4 @@
 composer.lock
 symfony.lock
 public/php_errors.log
+.DS_Store
