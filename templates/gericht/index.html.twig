@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GerichtController!{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+    <h2>Edit Dishes</h2>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Order Num</td>
+                <td>Name</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gericht in gerichte%}
+            <tr>
+                <td>{{gericht.id}}</td>
+                <td>{{gericht.name}}</td>
+                <td>{{gericht.description}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
