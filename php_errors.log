@@ -1,0 +1,6 @@
+[23-May-2022 13:32:40 UTC] [critical] Error thrown while running command "'assets:dump'". Message: "Command "assets:dump" is not defined.
+
+Did you mean one of these?
+    assets:install
+    config:dump-reference"
+
