@@ -40,7 +40,7 @@ class Gericht
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="gericht")
      */
-    private $caterogy;
+    private $category;
 
 
     public function getImage(){ // image = bild
@@ -93,14 +93,14 @@ class Gericht
         return $this;
     }
 
-    public function getCaterogy(): ?Category
+    public function getCategory(): ?Category
     {
-        return $this->caterogy;
+        return $this->category;
     }
 
-    public function setCaterogy(?Category $caterogy): self
+    public function setCategory(?Category $category): self
     {
-        $this->caterogy = $caterogy;
+        $this->category = $category;
 
         return $this;
     }
