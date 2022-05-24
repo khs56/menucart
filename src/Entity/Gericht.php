@@ -32,12 +32,12 @@ class Gericht
      */
     private $price;
 
-      /**
-     * @ORM\Column(type="string", length=255)
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
-    public function getImage(){
+    public function getImage(){ // image = bild
         return $this->image;
     }
 
