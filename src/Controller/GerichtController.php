@@ -40,6 +40,21 @@ class GerichtController extends AbstractController
         if($form->isSubmitted()){
             //EntityManager
             $em = $this->getDoctrine()->getManager();
+            $image = $form->get('image_file')->getData();
+            // $image = $request->files->get('image_file');
+            // echo "<pre>";
+            // var_dump($image);
+            // echo "</pre>";
+            // die();
+
+            if($image){
+                $dateiname = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+            $image->move(
+                $this->getParameter('images_folder'), $dateiname
+            );
+            
+            $gericht->setImage($dateiname);
             $em->persist($gericht);
             $em->flush();
 
