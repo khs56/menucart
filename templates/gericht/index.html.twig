@@ -21,6 +21,7 @@
                 <td>Order Num</td>
                 <td>Name</td>
                 <td>Description</td>{#Beschreibung#}
+                <td>Category</td>
                 <td>Price</td>  {#Preis#}
                 <td>Delete</td> {#Loschen#}
                 <td><a href="{{path('create')}}" class="href">Create</a></td> {#Anlegen#}
@@ -32,6 +33,7 @@
                 <td>{{gericht.id}}</td>
                 <td><a href="{{path('show', {id: gericht.id}) }}" class="href">{{gericht.name}}</a></td>
                 <td>{{gericht.description}}</td>
+                <td>{{gericht.category}}</td>
                 <td>{{gericht.price}}</td>
                 <td><a href="{{path('delete', {id: gericht.id}) }}" class="href">X</a></td>
             </tr>
