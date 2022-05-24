@@ -32,6 +32,20 @@ class Gericht
      */
     private $price;
 
+      /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    public function getImage(){
+        return $this->image;
+    }
+
+    public function setImage(string $image){
+        $this->image = $image;
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
