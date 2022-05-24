@@ -30,7 +30,7 @@
             {% for gericht in gerichte%}
             <tr>
                 <td>{{gericht.id}}</td>
-                <td>{{gericht.name}}</td>
+                <td><a href="{{path('show', {id: gericht.id}) }}" class="href">{{gericht.name}}</a></td>
                 <td>{{gericht.description}}</td>
                 <td>{{gericht.price}}</td>
                 <td><a href="{{path('delete', {id: gericht.id}) }}" class="href">X</a></td>
