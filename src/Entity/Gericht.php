@@ -37,6 +37,12 @@ class Gericht
      */
     private $image;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="gericht")
+     */
+    private $caterogy;
+
+
     public function getImage(){ // image = bild
         return $this->image;
     }
@@ -83,6 +89,18 @@ class Gericht
     public function setPrice(?float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getCaterogy(): ?Category
+    {
+        return $this->caterogy;
+    }
+
+    public function setCaterogy(?Category $caterogy): self
+    {
+        $this->caterogy = $caterogy;
 
         return $this;
     }
