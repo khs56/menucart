@@ -85,4 +85,15 @@ class GerichtController extends AbstractController
 
         return $this->redirect($this->generateUrl('home'));
     }
+
+    /**
+     * @Route("/show/{id}", name="show")
+     */
+    public function show(Gericht $gericht){ // show = anzeigen, @ParamConverter
+        //dump($gericht);
+        return $this->render('gericht/show.html.twig', [
+            'gericht' => $gericht, // 'controller_name' => 'GerichtController',
+        ]);
+    }
+
 }
