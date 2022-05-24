@@ -43,6 +43,9 @@ class GerichtController extends AbstractController
             $em->persist($gericht);
             $em->flush();
 
+            //message
+            $this->addFlash('success', "Dish was created successfully");
+
             return $this->redirect($this->generateUrl('home'));
         }
 
@@ -50,5 +53,21 @@ class GerichtController extends AbstractController
         return $this->render('gericht/create.html.twig', [
             'createForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function delete($id, GerichtRepository $gr){
+        //EntityManager
+        $em = $this->getDoctrine()->getManager();
+        $gericht = $gr->find($id);
+        $em->remove($gericht);
+        $em->flush();
+
+        //message
+        $this->addFlash('success', 'Dish was removed successfully'); // success = erfolg
+
+        return $this->redirect($this->generateUrl('home'));
     }
 }
