@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Gericht;
+use App\Form\GerichtType;
 use App\Repository\GerichtRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,14 +32,23 @@ class GerichtController extends AbstractController
      */
     public function create(Request $request){
         $gericht = new Gericht();
-        $gericht->setName('Pizza');
+        
+        //form
+        $form = $this->createForm(GerichtType::class, $gericht);
+        $form->handleRequest($request);
 
-        //EntityManager
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($gericht);
-        $em->flush();
+        if($form->isSubmitted()){
+            //EntityManager
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($gericht);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('home'));
+        }
 
         //Response
-        return new Response("Dish was created");
+        return $this->render('gericht/create.html.twig', [
+            'createForm' => $form->createView(),
+        ]);
     }
 }
