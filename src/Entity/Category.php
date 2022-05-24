@@ -53,7 +53,7 @@ class Category
     }
 
     /**
-     * @return Collection<int, Gericht>
+     * @return Collection|Gericht[]
      */
     public function getGericht(): Collection
     {
@@ -72,8 +72,12 @@ class Category
 
     public function removeGericht(Gericht $gericht): self
     {
-        if ($this->gericht->removeElement($gericht)) {
-            $gericht->removeCategory($this);
+        if ($this->gericht->contains($gericht)) {
+            $this->gericht->removeElement($gericht);
+            // set the owning side to null (unless already changed)
+            if ($gericht->getKategorie() === $this) {
+                $gericht->setKategorie(null);
+            }
         }
 
         return $this;
