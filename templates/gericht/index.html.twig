@@ -3,6 +3,13 @@
 {% block title %}Hello GerichtController!{% endblock %}
 
 {% block body %}
+
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endfor %}
+
 <br>
 <div class="container">
     <h2>Edit Dishes</h2>
@@ -13,7 +20,10 @@
             <tr>
                 <td>Order Num</td>
                 <td>Name</td>
-                <td>Description</td>
+                <td>Description</td>{#Beschreibung#}
+                <td>Price</td>  {#Preis#}
+                <td>Delete</td> {#Loschen#}
+                <td><a href="{{path('create')}}" class="href">Create</a></td> {#Anlegen#}
             </tr>
         </thead>
         <tbody>
@@ -22,6 +32,8 @@
                 <td>{{gericht.id}}</td>
                 <td>{{gericht.name}}</td>
                 <td>{{gericht.description}}</td>
+                <td>{{gericht.price}}</td>
+                <td><a href="{{path('delete', {id: gericht.id}) }}" class="href">X</a></td>
             </tr>
             {% endfor %}
         </tbody>
