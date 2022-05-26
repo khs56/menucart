@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RegistryController extends AbstractController
 {
     #[Route('/reg', name: 'reg')]
-    public function index(): Response
+    public function reg(): Response
     {
         $regForm = $this->createFormBuilder()
         ->add('username', textType::class, [
