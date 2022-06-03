@@ -37,6 +37,7 @@
 							<h5>{{g.name}}</h5>
 							<h5>${{g.price}} USD</h5>
 							<p>{{g.description}}</p>
+							<a class="btn btn-outline-danger btn-sm" href="{{path('order', {id:g.id}) }}" role="button">Order</a>
 						</div>
 					</div>
 				{% endfor %}
